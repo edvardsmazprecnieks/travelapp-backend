@@ -1,11 +1,16 @@
 import express from "express";
 import type { Request, Response } from "express";
+import helmet from "helmet";
 import flightSearchRoutes from "./routes/api/flightSearchRoutes.js";
 import userRoutes from "./routes/api/userRoutes.js";
 import "dotenv/config";
 
 const app = express();
 const port = process.env["PORT"] || 3000;
+
+app.disable("x-powered-by");
+
+app.use(helmet());
 
 app.use(express.json());
 
